@@ -143,4 +143,5 @@ Test classes are provided for:
 
 Below is the summary of code coverage generated using **JaCoCo**:
 
-![Code Coverage](![image](https://github.com/user-attachments/assets/2303c9eb-270e-48ca-ae90-34ea229dd4f8)
+![Code Coverage](https://github.com/user-attachments/assets/fa7ab923-46c7-454e-af7e-5bc9aee5d3b7)
+
