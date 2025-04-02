@@ -45,8 +45,10 @@ class TaskControllerTest {
 
     @Test
     void testGetAllTasks() throws Exception {
+        // arrange & act
         Mockito.when(taskService.getAllTasks()).thenReturn(List.of(task));
 
+        // assert
         mockMvc.perform(get("/api/v1/tasks"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].title").value("Task One"));
@@ -54,8 +56,10 @@ class TaskControllerTest {
 
     @Test
     void testGetTaskById() throws Exception {
+        // arrange & act
         Mockito.when(taskService.getTaskById(1L)).thenReturn(task);
 
+        // assert
         mockMvc.perform(get("/api/v1/task/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("Task One"));
@@ -63,8 +67,10 @@ class TaskControllerTest {
 
     @Test
     void testCreateTask() throws Exception {
+        // arrange
         Mockito.when(taskService.createTask(any(Task.class))).thenReturn(task);
 
+        // assert
         mockMvc.perform(post("/api/v1/task")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(task)))
@@ -74,8 +80,10 @@ class TaskControllerTest {
 
     @Test
     void testUpdateTask() throws Exception {
+        // arrange & act
         Mockito.when(taskService.updateTask(eq(1L), any(Task.class))).thenReturn(task);
 
+        // assert
         mockMvc.perform(put("/api/v1/task/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(task)))
@@ -85,6 +93,7 @@ class TaskControllerTest {
 
     @Test
     void testDeleteTask() throws Exception {
+        // act & assert
         mockMvc.perform(delete("/api/v1/task/1"))
                 .andExpect(status().isOk());
     }
